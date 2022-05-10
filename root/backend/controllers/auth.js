@@ -39,7 +39,6 @@ const loginUser = async (req, res) => {
 };
 
 const signupUser = async (req, res) => {
-  console.log("asd");
   const { userName, password } = req.body;
 
   if (!password || password.length < 6) {
