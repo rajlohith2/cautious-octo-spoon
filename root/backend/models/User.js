@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const uniqueValidator = require("mongoose-unique-validator");
-const schemaCleaner = require("../utils/schemaCleaner");
+const schemaCleaner = require("../util/schemaCleaner");
 
 const userSchema = new mongoose.Schema({
   userName: {
@@ -25,20 +25,25 @@ const userSchema = new mongoose.Schema({
     type: String,
     minlength: 1,
     maxlength: 1,
-    required: true,
+    // required: true,
     trim: true,
   },
   favouritePlayer: {
     type: String,
     minlength: 3,
     maxlength: 20,
-    required: true,
+    // required: true,
     trim: true,
   },
   favouriteClub: {
     type: String,
     minlength: 3,
     maxlength: 20,
+    // required: true,
+    trim: true,
+  },
+  passwordHash: {
+    type: String,
     required: true,
     trim: true,
   },

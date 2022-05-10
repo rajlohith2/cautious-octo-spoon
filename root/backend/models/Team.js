@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const uniqueValidator = require("mongoose-unique-validator");
-const schemaCleaner = require("../utils/schemaCleaner");
+const schemaCleaner = require("../util/schemaCleaner");
 
 const teamSchema = new mongoose.Schema({
   teamName: {
