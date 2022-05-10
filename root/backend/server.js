@@ -1,17 +1,17 @@
-import connectDB from './config/db.js'
-import express from 'express'
-import dotenv  from 'dotenv'
-
+const connectDB = require("./config/db.js");
+const dotenv = require("dotenv");
+const app = require("./app.js");
 //connect database
-connectDB()
+connectDB();
 
 //dotenv config
-dotenv.config()
-
-const app = express()
+dotenv.config();
 
 //Creating API for user
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5000;
 
 //Express js listen method to run project on http://localhost:5000
-app.listen(PORT, console.log(`App is running in ${process.env.NODE_ENV} mode on port ${PORT}`))
+app.listen(
+  PORT,
+  console.log(`App is running in ${process.env.NODE_ENV} mode on port ${PORT}`)
+);
