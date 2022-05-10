@@ -11,6 +11,7 @@ const connectDB = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
+    con.PlayerStats.renameCollection("Player");
     console.log(`Database connected : ${con.connection.host}`);
   } catch (error) {
     console.error(`Error: ${error.message}`);
