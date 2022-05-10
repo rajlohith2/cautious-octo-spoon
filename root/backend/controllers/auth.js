@@ -17,9 +17,9 @@ const loginUser = async (req, res) => {
       .send({ message: "No account with this username has been registered." });
   }
 
-  // const credentialsValid = await bcrypt.compare(password, user.passwordHash);
-  console.log(user.passwordHash);
-  const credentialsValid = user.passwordHash == password;
+  const credentialsValid = await bcrypt.compare(password, user.passwordHash);
+  // console.log(user.passwordHash);
+  // const credentialsValid = user.passwordHash == password;
   if (!credentialsValid) {
     return res.status(401).send({ message: "Invalid username or password." });
   }
@@ -39,7 +39,7 @@ const loginUser = async (req, res) => {
 };
 
 const signupUser = async (req, res) => {
-    console.log("asd");
+  console.log("asd");
   const { userName, password } = req.body;
 
   if (!password || password.length < 6) {
@@ -72,7 +72,7 @@ const signupUser = async (req, res) => {
     passwordHash,
   });
 
-  const savedUser =  user.save();
+  const savedUser = user.save();
 
   const payloadForToken = {
     id: savedUser._id,
@@ -85,7 +85,6 @@ const signupUser = async (req, res) => {
     userName: savedUser.userName,
     id: savedUser._id,
     avatar: savedUser.avatar,
-    karma: 0,
   });
 };
 
