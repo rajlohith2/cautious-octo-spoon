@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const authRoutes = require('./routes/auth');
+const playerRoutes = require('./routes/player');
+
 const app = express();
 
 app.use(cors());
@@ -9,6 +11,7 @@ app.use(express.urlencoded({ limit: "10mb", extended: true }));
 
 
 app.use('/auth', authRoutes);
+app.use('/player', playerRoutes);
 // app.use('/api/posts', postRoutes);
 // app.use('/api/subreddits', subredditRoutes);
 // app.use('/api/users', userRoutes);

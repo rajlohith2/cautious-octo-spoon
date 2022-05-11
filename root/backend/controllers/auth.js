@@ -1,9 +1,10 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
+const dotenv = require("dotenv");
 // const { SECRET } = require("../config/config");
-
-const SECRET = "wesuckbad";
+dotenv.config();
+const SECRET = process.env.SECRET;
 const loginUser = async (req, res) => {
   const { username, password } = req.body;
 
@@ -27,7 +28,6 @@ const loginUser = async (req, res) => {
   const payloadForToken = {
     id: user._id,
   };
-
   const token = jwt.sign(payloadForToken, SECRET);
 
   res.status(200).json({

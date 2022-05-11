@@ -4,7 +4,7 @@ const schemaCleaner = require("../util/schemaCleaner");
 
 const playerSchema = new mongoose.Schema({
   sofifa_id: {
-    type: Number,
+    type: String,
     required: true,
   },
   player_url: {
@@ -26,9 +26,6 @@ const playerSchema = new mongoose.Schema({
     type: Number,
   },
   value_eur: {
-    type: Number,
-  },
-  wage_eur: {
     type: Number,
   },
   age: {
@@ -64,17 +61,11 @@ const playerSchema = new mongoose.Schema({
   club_joined: {
     type: Date,
   },
-  club_contract_valid_until: {
-    type: Date,
-  },
   nationality_id: {
     type: Number,
   },
   nationality_name: {
     type: String,
-  },
-  nation_team_id: {
-    type: Number,
   },
   nation_position: {
     type: String,
@@ -100,16 +91,7 @@ const playerSchema = new mongoose.Schema({
   body_type: {
     type: String,
   },
-  real_face: {
-    type: String,
-  },
-  release_clause_eur: {
-    type: Number,
-  },
   player_tags: {
-    type: String,
-  },
-  player_traits: {
     type: String,
   },
   pace: {
@@ -232,87 +214,6 @@ const playerSchema = new mongoose.Schema({
   goalkeeping_reflexes: {
     type: Number,
   },
-  ls: {
-    type: String,
-  },
-  st: {
-    type: String,
-  },
-  rs: {
-    type: String,
-  },
-  lw: {
-    type: String,
-  },
-  lf: {
-    type: String,
-  },
-  cf: {
-    type: String,
-  },
-  rf: {
-    type: String,
-  },
-  rw: {
-    type: String,
-  },
-  lam: {
-    type: String,
-  },
-  cam: {
-    type: String,
-  },
-  ram: {
-    type: String,
-  },
-  lm: {
-    type: String,
-  },
-  lcm: {
-    type: String,
-  },
-  cm: {
-    type: String,
-  },
-  rcm: {
-    type: String,
-  },
-  rm: {
-    type: String,
-  },
-  lwb: {
-    type: String,
-  },
-  ldm: {
-    type: String,
-  },
-  cdm: {
-    type: String,
-  },
-  rdm: {
-    type: String,
-  },
-  rwb: {
-    type: String,
-  },
-  lb: {
-    type: String,
-  },
-  lcb: {
-    type: String,
-  },
-  cb: {
-    type: String,
-  },
-  rcb: {
-    type: String,
-  },
-  rb: {
-    type: String,
-  },
-  gk: {
-    type: String,
-  },
   player_face_url: {
     type: String,
   },
@@ -335,4 +236,4 @@ playerSchema.plugin(uniqueValidator);
 // replaces _id with id, convert id to string from ObjectID and deletes __v
 schemaCleaner(playerSchema);
 
-module.exports = mongoose.model("User", playerSchema);
+module.exports = mongoose.model("Player", playerSchema);
