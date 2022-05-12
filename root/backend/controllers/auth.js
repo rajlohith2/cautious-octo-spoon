@@ -2,8 +2,9 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
 const dotenv = require("dotenv");
-// const { SECRET } = require("../config/config");
+
 dotenv.config();
+
 const SECRET = process.env.SECRET;
 const loginUser = async (req, res) => {
   const { username, password } = req.body;
@@ -39,8 +40,12 @@ const loginUser = async (req, res) => {
 };
 
 const signupUser = async (req, res) => {
-  const { userName, password } = req.body;
-
+  const { userName, password, avatar, favouritePlayer, favouriteClub } =
+    req.body;
+  const avatarObj = {
+    exists: avatar ? true : false,
+    imagineLink: avatar,
+  };
   if (!password || password.length < 6) {
     return res
       .status(400)
@@ -69,6 +74,9 @@ const signupUser = async (req, res) => {
   const user = new User({
     userName,
     passwordHash,
+    avatar: avatarObj,
+    favouriteClub,
+    favouritePlayer,
   });
 
   const savedUser = user.save();

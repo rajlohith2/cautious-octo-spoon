@@ -10,7 +10,12 @@ const gameSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  gamePassword: {
+  gamePasswordHash: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  gameOwner: {
     type: String,
     minlength: 3,
     maxlength: 20,
@@ -22,16 +27,16 @@ const gameSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  teamsPlaying: [
+  playersSoldSoFar: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Team",
-    },
-  ],
-  playerSoldSoFar: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Player",
+      playerID: {
+        type: String,
+        trim: true,
+      },
+      soldAmount: {
+        type: Number,
+        trim: true,
+      },
     },
   ],
   gameRules: {
@@ -75,4 +80,4 @@ gameSchema.plugin(uniqueValidator);
 // replaces _id with id, convert id to string from ObjectID and deletes __v
 schemaCleaner(gameSchema);
 
-module.exports = mongoose.model("Team", gameSchema);
+module.exports = mongoose.model("Game", gameSchema);

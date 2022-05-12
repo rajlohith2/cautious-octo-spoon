@@ -21,13 +21,6 @@ const userSchema = new mongoose.Schema({
       default: "null",
     },
   },
-  onlineStatus: {
-    type: String,
-    minlength: 1,
-    maxlength: 1,
-    // required: true,
-    trim: true,
-  },
   favouritePlayer: {
     type: String,
     minlength: 3,

@@ -21,13 +21,19 @@ const teamSchema = new mongoose.Schema({
       default: "null",
     },
   },
-  gameID: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Game",
+  gameName: {
+    type: String,
+    minlength: 3,
+    maxlength: 20,
+    required: true,
+    trim: true,
   },
-  userID: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+  teamOwner: {
+    type: String,
+    minlength: 3,
+    maxlength: 20,
+    required: true,
+    trim: true,
   },
   remainingBudget: {
     type: Number,
@@ -36,12 +42,14 @@ const teamSchema = new mongoose.Schema({
   players: [
     {
       playerID: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Player",
+        type: String,
+        minlength: 3,
+        maxlength: 20,
+        required: true,
+        trim: true,
       },
       soldAmount: {
         type: Number,
-        required: true,
       },
     },
   ],
